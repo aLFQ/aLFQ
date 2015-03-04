@@ -1,0 +1,24 @@
+year <- sub("-.*", "", meta$Date)
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "Article",
+         title = "aLFQ: an R-package for estimating absolute protein quantities from label-free LC-MS/MS proteomics data",
+         author = personList(person(last="Rosenberger", first="George"),
+                     person(family="Ludwig", given="Christina"),
+                     person(family="Roest", given=c("Hannes", "L.")),
+                     person(family="Aebersold", given="Ruedi"),
+                     person(family="Malmstroem", given="Lars")),
+         journal = "Bioinformatics",
+         year         = "2014",
+         volume       = "30",
+         number       = "17",
+         pages        = "2511-2513",
+         doi          = "10.1093/bioinformatics/btu200",
+         url          = "http://bioinformatics.oxfordjournals.org/content/30/17/2511.abstract",
+         
+         textVersion = 
+         paste("Rosenberger G, Ludwig C, Roest HL, Aebersold R, Malmstroem L. ", 
+               "aLFQ: an R-package for estimating absolute protein quantities from label-free LC-MS/MS proteomics data. ",
+               "Bioinformatics. 2014 Sep 1;30(17):2511-3. doi: 10.1093/bioinformatics/btu200. Epub 2014 Apr 20.",
+               sep=""))
+ 

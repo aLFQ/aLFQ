@@ -1,0 +1,1211 @@
+
+R Under development (unstable) (2014-09-27 r66695) -- "Unsuffered Consequences"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "aLFQ"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('aLFQ')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("ALF")
+> ### * ALF
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ALF
+> ### Title: Generate ALF report
+> ### Aliases: ALF ALF.default
+> ### Keywords: ALF SRM SWATH SIS AQUA
+> 
+> ### ** Examples
+> 
+> ## Not run: data(UPS2MS)
+> 
+> ## Not run: ALF(UPS2_SRM)
+> 
+> ## Not run: data(LUDWIGMS)
+> 
+> ## Not run: ALF(LUDWIG_SRM)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("APEX")
+> ### * APEX
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: APEX
+> ### Title: Training, testing and validation of APEX peptide observability
+> ###   models
+> ### Aliases: APEX APEX.default predict.APEX cval.APEX print.APEX plot.APEX
+> ### Keywords: APEX
+> 
+> ### ** Examples
+> 
+> set.seed(131)
+> 
+> data(APEXMS)
+> 
+> APEX_ORBI<-head(APEX_ORBI,50) # Remove this line for real applications
+> APEX_ORBI.af <- apexFeatures(APEX_ORBI)
+> APEX_ORBI.apex <- APEX(data=APEX_ORBI.af)
+> print(APEX_ORBI.apex)
+APEX
+Features: 69
+Trainingset size: 50
+Testset size: 
+> 
+> APEX_ORBI_cval.apex <- cval(APEX_ORBI.apex, folds=2)
+> plot(APEX_ORBI_cval.apex)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("APEXMS")
+> ### * APEXMS
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: APEXMS
+> ### Title: Calculating absolute and relative protein abundance from mass
+> ###   spectrometry-based protein expression data.
+> ### Aliases: APEXMS APEX_ORBI APEX_LCQ
+> ### Keywords: datasets APEX
+> 
+> ### ** Examples
+> 
+> data(APEXMS)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("AbsoluteQuantification")
+> ### * AbsoluteQuantification
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: AbsoluteQuantification
+> ### Title: Absolute label-free quantification of mass spectrometry
+> ###   proteomics experiments
+> ### Aliases: AbsoluteQuantification AbsoluteQuantification.default
+> ###   predict.AbsoluteQuantification cval cval.default
+> ###   cval.AbsoluteQuantification print.AbsoluteQuantification
+> ###   plot.AbsoluteQuantification hist.AbsoluteQuantification pivot
+> ###   pivot.default pivot.AbsoluteQuantification export export.default
+> ###   export.AbsoluteQuantification
+> ### Keywords: AbsoluteQuantification absolute label-free quantification
+> 
+> ### ** Examples
+> 
+> data(UPS2MS)
+> 
+> UPS2_SRM<-head(UPS2_SRM,100) # Remove this line for real applications
+> data_PI <- ProteinInference(UPS2_SRM)
+> data_AQ <- predict(cval(AbsoluteQuantification(data_PI),mcx=2))
+> print(data_AQ)
+AbsoluteQuantification
+
+Number of proteins: 4
+Calibration Trainingset size: 4
+Calibration Testset size: 4
+Calibration Regression mean-fold error: 1.86633
+Calibration Regression R-squared: 0.9395671
+Calibration cross-validation mean-fold error: 3.751026
+Calibration cross-validation R-squared: 0.7392299
+Calibration CV: 17.53133
+Normalized Concentration CV: -86.98352
+> plot(data_AQ)
+> hist(data_AQ)
+> pivot(data_AQ)
+                             UPS2_SRM
+O76070ups|SYUG_HUMAN_UPS    0.6497359
+P00167ups|CYB5_HUMAN_UPS  104.9926657
+P00709ups|LALBA_HUMAN_UPS   2.3885620
+P00915ups|CAH1_HUMAN_UPS  249.4324721
+> 
+> 
+> 
+> cleanEx()
+> nameEx("LUDWIGMS")
+> ### * LUDWIGMS
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: LUDWIGMS
+> ### Title: Estimation of Absolute Protein Quantities of Unlabeled Samples
+> ###   by Selected Reaction Monitoring Mass Spectrometry..
+> ### Aliases: LUDWIGMS LUDWIG_SRM
+> ### Keywords: datasets UPS2
+> 
+> ### ** Examples
+> 
+> data(LUDWIGMS)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("PeptideInference")
+> ### * PeptideInference
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: PeptideInference
+> ### Title: Peptide inference for aLFQ import data frame
+> ### Aliases: PeptideInference PeptideInference.default
+> ### Keywords: PeptideInference label-free quantification peptide inference
+> 
+> ### ** Examples
+> 
+> data(UPS2MS)
+> 
+> data_PI <- PeptideInference(UPS2_SRM)
+> print(data_PI)
+      run_id                protein_id                   peptide_id
+1   UPS2_SRM  O76070ups|SYUG_HUMAN_UPS                    EGVVGAVEK
+2   UPS2_SRM  O76070ups|SYUG_HUMAN_UPS                    QGVTEAAEK
+3   UPS2_SRM  O76070ups|SYUG_HUMAN_UPS             TVEEAENIAVTSGVVR
+4   UPS2_SRM  P00167ups|CYB5_HUMAN_UPS        EQAGGDATENFEDVGHSTDAR
+5   UPS2_SRM  P00167ups|CYB5_HUMAN_UPS        EQAGGDATENFEDVGHSTDAR
+6   UPS2_SRM  P00167ups|CYB5_HUMAN_UPS                FLEEHPGGEEVLR
+7   UPS2_SRM  P00167ups|CYB5_HUMAN_UPS                FLEEHPGGEEVLR
+8   UPS2_SRM  P00167ups|CYB5_HUMAN_UPS                    STWLILHHK
+9   UPS2_SRM  P00167ups|CYB5_HUMAN_UPS               TFIIGELHPDDRPK
+10  UPS2_SRM  P00167ups|CYB5_HUMAN_UPS               TFIIGELHPDDRPK
+11  UPS2_SRM  P00167ups|CYB5_HUMAN_UPS                    YYTLEEIQK
+12  UPS2_SRM P00709ups|LALBA_HUMAN_UPS                     CELSQLLK
+13  UPS2_SRM P00709ups|LALBA_HUMAN_UPS                    GIDYWLAHK
+14  UPS2_SRM P00709ups|LALBA_HUMAN_UPS                     LEQWLCEK
+15  UPS2_SRM P00709ups|LALBA_HUMAN_UPS                    NICDISCDK
+16  UPS2_SRM P00709ups|LALBA_HUMAN_UPS                     SSQVPQSR
+17  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS                 ADGLAVIGVLMK
+18  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS               ESISVSSEQLAQFR
+19  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS                    GGPFSDSYR
+20  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS           HDTSLKPISVSYNPATAK
+21  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS             LYPIANGNNQSPVDIK
+22  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS                    VLDALQAIK
+23  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS                   YSSLAEAASK
+24  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS             AVQQPDGLAVLGIFLK
+25  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS             AVQQPDGLAVLGIFLK
+26  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                 EPISVSSEQVLK
+27  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                    GGPLDGTYR
+28  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                 QSPVDIDTHTAK
+29  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                 QSPVDIDTHTAK
+30  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                   SADFTNFDPR
+31  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                    VVDVLDSIK
+32  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                YAAELHLVHWNTK
+33  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS                YAAELHLVHWNTK
+34  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS          YDPSLKPLSVSYDQATSLR
+35  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS          YDPSLKPLSVSYDQATSLR
+36  UPS2_SRM  P01008ups|ANT3_HUMAN_UPS             EQLQDMGLVDLFSPEK
+37  UPS2_SRM  P01008ups|ANT3_HUMAN_UPS                HGSPVDICTAKPR
+38  UPS2_SRM  P01008ups|ANT3_HUMAN_UPS                  TSDQIHFFFAK
+39  UPS2_SRM   P01031ups|CO5_HUMAN_UPS                AFTECCVVASQLR
+40  UPS2_SRM P01127ups|PDGFB_HUMAN_UPS                  CETVAAARPVT
+41  UPS2_SRM P01127ups|PDGFB_HUMAN_UPS                     TEVFEISR
+42  UPS2_SRM   P01133ups|EGF_HUMAN_UPS                YACNCVVGYIGER
+43  UPS2_SRM  P01344ups|IGF2_HUMAN_UPS     AYRPSETLCGGELVDTLQFVCGDR
+44  UPS2_SRM  P01344ups|IGF2_HUMAN_UPS                    GIVEECCFR
+45  UPS2_SRM  P01344ups|IGF2_HUMAN_UPS             SCDLALLETYCATPAK
+46  UPS2_SRM   P02144ups|MYG_HUMAN_UPS                     GHPETLEK
+47  UPS2_SRM   P02144ups|MYG_HUMAN_UPS               HGATVLTALGGILK
+48  UPS2_SRM   P02144ups|MYG_HUMAN_UPS               HGATVLTALGGILK
+49  UPS2_SRM   P02144ups|MYG_HUMAN_UPS              HPGDFGADAQGAMNK
+50  UPS2_SRM   P02144ups|MYG_HUMAN_UPS              VEADIPGHGQEVLIR
+51  UPS2_SRM   P02144ups|MYG_HUMAN_UPS              VEADIPGHGQEVLIR
+52  UPS2_SRM P02753ups|RETBP_HUMAN_UPS                  DPNGLPPEAQK
+53  UPS2_SRM P02753ups|RETBP_HUMAN_UPS       GNDDHWIVDTDYDTYAVQYSCR
+54  UPS2_SRM P02753ups|RETBP_HUMAN_UPS                  LIVHNGYCDGR
+55  UPS2_SRM P02753ups|RETBP_HUMAN_UPS                  LIVHNGYCDGR
+56  UPS2_SRM P02753ups|RETBP_HUMAN_UPS           LLNLDGTCADSYSFVFSR
+57  UPS2_SRM P02753ups|RETBP_HUMAN_UPS                   YWGVASFLQK
+58  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS                    CCTESLVNR
+59  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS                     FQNALLVR
+60  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS                   LVNEVTEFAK
+61  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS                    QTALVELVK
+62  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS             RPCFSALEVDETYVPK
+63  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS            VFDEFKPLVEEPQNLIK
+64  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS            VFDEFKPLVEEPQNLIK
+65  UPS2_SRM  P02768ups|ALBU_HUMAN_UPS                 YICENQDSISSK
+66  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                 AFYVNVLNEEQR
+67  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                DPILFPSFIHSQK
+68  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                DPILFPSFIHSQK
+69  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                FNTANDDNVTQVR
+70  UPS2_SRM  P04040ups|CATA_HUMAN_UPS             GAGAFGYFEVTHDITK
+71  UPS2_SRM  P04040ups|CATA_HUMAN_UPS             GAGAFGYFEVTHDITK
+72  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                    LFAYPDTHR
+73  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                    LFAYPDTHR
+74  UPS2_SRM  P04040ups|CATA_HUMAN_UPS              LGPNYLHIPVNCPYR
+75  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                 LVNANGEAVYCK
+76  UPS2_SRM  P04040ups|CATA_HUMAN_UPS             NAIHTFVQSGSHLAAR
+77  UPS2_SRM  P04040ups|CATA_HUMAN_UPS             NAIHTFVQSGSHLAAR
+78  UPS2_SRM  P04040ups|CATA_HUMAN_UPS                    NLSVEDAAR
+79  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS                      FEEILTR
+80  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS               GGDDLDPNYVLSSR
+81  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS        GTGGVDTAAVGSVFDVSNADR
+82  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS            LGSSEVEQVQLVVDGVK
+83  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS               LNYKPEEEYPDLSK
+84  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS               LNYKPEEEYPDLSK
+85  UPS2_SRM  P06732ups|KCRM_HUMAN_UPS               LSVEALNSLTGEFK
+86  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS                     AALEELVK
+87  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS                 ASAELIEEEVAK
+88  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS                   DQGGELLSLR
+89  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS               HGAEVIDTPVFELK
+90  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS               HGAEVIDTPVFELK
+91  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS       IGDYVQQHGGVSLVEQLLQDPK
+92  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS                TTETQVLVASAQK
+93  UPS2_SRM  P12081ups|SYHC_HUMAN_UPS                    YDLTVPFAR
+94  UPS2_SRM  P15559ups|NQO1_HUMAN_UPS                   ALIVLAHSER
+95  UPS2_SRM  P15559ups|NQO1_HUMAN_UPS                   ALIVLAHSER
+96  UPS2_SRM  P15559ups|NQO1_HUMAN_UPS                EGHLSPDIVAEQK
+97  UPS2_SRM  P15559ups|NQO1_HUMAN_UPS                EGHLSPDIVAEQK
+98  UPS2_SRM  P15559ups|NQO1_HUMAN_UPS                     IQILEGWK
+99  UPS2_SRM  P15559ups|NQO1_HUMAN_UPS                     TSFNYAMK
+100 UPS2_SRM  P16083ups|NQO2_HUMAN_UPS                    NVAVDELSR
+101 UPS2_SRM  P16083ups|NQO2_HUMAN_UPS           VLAPQISFAPEIASEEER
+102 UPS2_SRM  P16083ups|NQO2_HUMAN_UPS           VLAPQISFAPEIASEEER
+103 UPS2_SRM  P16083ups|NQO2_HUMAN_UPS                  VLIVYAHQEPK
+104 UPS2_SRM  P16083ups|NQO2_HUMAN_UPS                  VLIVYAHQEPK
+105 UPS2_SRM   P41159ups|LEP_HUMAN_UPS                   DLLHVLAFSK
+106 UPS2_SRM   P41159ups|LEP_HUMAN_UPS                   DLLHVLAFSK
+107 UPS2_SRM   P41159ups|LEP_HUMAN_UPS                INDISHTQSVSSK
+108 UPS2_SRM   P41159ups|LEP_HUMAN_UPS                INDISHTQSVSSK
+109 UPS2_SRM   P41159ups|LEP_HUMAN_UPS           MDQTLAVYQQILTSMPSR
+110 UPS2_SRM   P41159ups|LEP_HUMAN_UPS                NVIQISNDLENLR
+111 UPS2_SRM   P41159ups|LEP_HUMAN_UPS                NVIQISNDLENLR
+112 UPS2_SRM   P41159ups|LEP_HUMAN_UPS           VTGLDFIPGLHPILTLSK
+113 UPS2_SRM   P41159ups|LEP_HUMAN_UPS           VTGLDFIPGLHPILTLSK
+114 UPS2_SRM   P55957ups|BID_HUMAN_UPS                IEADSESQEDIIR
+115 UPS2_SRM  P61626ups|LYSC_HUMAN_UPS                    ATNYNAGDR
+116 UPS2_SRM  P61626ups|LYSC_HUMAN_UPS                 GISLANWMCLAK
+117 UPS2_SRM  P61626ups|LYSC_HUMAN_UPS                      LGMDGYR
+118 UPS2_SRM  P61626ups|LYSC_HUMAN_UPS TPGAVNACHLSCSALLQDNIADAVACAK
+119 UPS2_SRM  P61626ups|LYSC_HUMAN_UPS                     WESGYNTR
+120 UPS2_SRM  P61769ups|B2MG_HUMAN_UPS       SNFLNCYVSGFHPSDIEVDLLK
+121 UPS2_SRM  P61769ups|B2MG_HUMAN_UPS                   VNHVTLSQPK
+122 UPS2_SRM  P61769ups|B2MG_HUMAN_UPS                   VNHVTLSQPK
+123 UPS2_SRM  P62937ups|PPIA_HUMAN_UPS                  EGMNIVEAMER
+124 UPS2_SRM  P62937ups|PPIA_HUMAN_UPS                    FEDENFILK
+125 UPS2_SRM  P62937ups|PPIA_HUMAN_UPS               IIPGFMCQGGDFTR
+126 UPS2_SRM  P62937ups|PPIA_HUMAN_UPS                      TEWLDGK
+127 UPS2_SRM  P62937ups|PPIA_HUMAN_UPS                    VSFELFADK
+128 UPS2_SRM  P62988ups|UBIQ_HUMAN_UPS                    ESTLHLVLR
+129 UPS2_SRM  P62988ups|UBIQ_HUMAN_UPS                    ESTLHLVLR
+130 UPS2_SRM  P62988ups|UBIQ_HUMAN_UPS             TITLEVEPSDTIENVK
+131 UPS2_SRM  P62988ups|UBIQ_HUMAN_UPS                    TLSDYNIQK
+132 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS                      FLFEGQR
+133 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS                    LTQSMAIIR
+134 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS                    QGVPMNSLR
+135 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS                 VIGQDSSEIHFK
+136 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS                 VIGQDSSEIHFK
+137 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS        YIAWPLQGWQATFGGGDHPPK
+138 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                 EFTPPVQAAYQK
+139 UPS2_SRM   P68871ups|HBB_HUMAN_UPS          FFESFGDLSTPDAVMGNPK
+140 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                    LHVDPENFR
+141 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                    LHVDPENFR
+142 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                   LLVVYPWTQR
+143 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                     VHLTPEEK
+144 UPS2_SRM   P68871ups|HBB_HUMAN_UPS             VLGAFSDGLAHLDNLK
+145 UPS2_SRM   P68871ups|HBB_HUMAN_UPS             VLGAFSDGLAHLDNLK
+146 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                VNVDEVGGEALGR
+147 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                 VVAGVANALAHK
+148 UPS2_SRM   P68871ups|HBB_HUMAN_UPS                 VVAGVANALAHK
+149 UPS2_SRM   P69905ups|HBA_HUMAN_UPS                    MFLSFPTTK
+150 UPS2_SRM   P69905ups|HBA_HUMAN_UPS             TYFPHFDLSHGSAQVK
+151 UPS2_SRM   P69905ups|HBA_HUMAN_UPS             TYFPHFDLSHGSAQVK
+152 UPS2_SRM   P69905ups|HBA_HUMAN_UPS                      VDPVNFK
+153 UPS2_SRM   P69905ups|HBA_HUMAN_UPS              VGAHAGEYGAEALER
+154 UPS2_SRM   P69905ups|HBA_HUMAN_UPS              VGAHAGEYGAEALER
+155 UPS2_SRM Q06830ups|PRDX1_HUMAN_UPS                     ADEGISFR
+156 UPS2_SRM Q06830ups|PRDX1_HUMAN_UPS                     GLFIIDDK
+157 UPS2_SRM Q06830ups|PRDX1_HUMAN_UPS                   LVQAFQFTDK
+158 UPS2_SRM Q06830ups|PRDX1_HUMAN_UPS                  QITVNDLPVGR
+159 UPS2_SRM Q06830ups|PRDX1_HUMAN_UPS                   TIAQDYGVLK
+                peptide_sequence precursor_charge concentration
+1                      EGVVGAVEK                2         0.449
+2                      QGVTEAAEK                2         0.449
+3               TVEEAENIAVTSGVVR                2         0.449
+4          EQAGGDATENFEDVGHSTDAR                2          44.9
+5          EQAGGDATENFEDVGHSTDAR                3          44.9
+6                  FLEEHPGGEEVLR                2          44.9
+7                  FLEEHPGGEEVLR                3          44.9
+8                      STWLILHHK                2          44.9
+9                 TFIIGELHPDDRPK                2          44.9
+10                TFIIGELHPDDRPK                3          44.9
+11                     YYTLEEIQK                2          44.9
+12                      CELSQLLK                2          4.49
+13                     GIDYWLAHK                2          4.49
+14                      LEQWLCEK                2          4.49
+15                     NICDISCDK                2          4.49
+16                      SSQVPQSR                2          4.49
+17                  ADGLAVIGVLMK                2           449
+18                ESISVSSEQLAQFR                2           449
+19                     GGPFSDSYR                2           449
+20            HDTSLKPISVSYNPATAK                3           449
+21              LYPIANGNNQSPVDIK                2           449
+22                     VLDALQAIK                2           449
+23                    YSSLAEAASK                2           449
+24              AVQQPDGLAVLGIFLK                2           449
+25              AVQQPDGLAVLGIFLK                3           449
+26                  EPISVSSEQVLK                2           449
+27                     GGPLDGTYR                2           449
+28                  QSPVDIDTHTAK                2           449
+29                  QSPVDIDTHTAK                3           449
+30                    SADFTNFDPR                2           449
+31                     VVDVLDSIK                2           449
+32                 YAAELHLVHWNTK                2           449
+33                 YAAELHLVHWNTK                3           449
+34           YDPSLKPLSVSYDQATSLR                2           449
+35           YDPSLKPLSVSYDQATSLR                3           449
+36              EQLQDMGLVDLFSPEK                2         0.449
+37                 HGSPVDICTAKPR                3         0.449
+38                   TSDQIHFFFAK                3         0.449
+39                 AFTECCVVASQLR                2           449
+40                   CETVAAARPVT                2         0.449
+41                      TEVFEISR                2         0.449
+42                 YACNCVVGYIGER                2          44.9
+43      AYRPSETLCGGELVDTLQFVCGDR                3         0.449
+44                     GIVEECCFR                2         0.449
+45              SCDLALLETYCATPAK                2         0.449
+46                      GHPETLEK                2          44.9
+47                HGATVLTALGGILK                2          44.9
+48                HGATVLTALGGILK                3          44.9
+49               HPGDFGADAQGAMNK                3          44.9
+50               VEADIPGHGQEVLIR                2          44.9
+51               VEADIPGHGQEVLIR                3          44.9
+52                   DPNGLPPEAQK                2          4.49
+53        GNDDHWIVDTDYDTYAVQYSCR                3          4.49
+54                   LIVHNGYCDGR                2          4.49
+55                   LIVHNGYCDGR                3          4.49
+56            LLNLDGTCADSYSFVFSR                2          4.49
+57                    YWGVASFLQK                2          4.49
+58                     CCTESLVNR                2           449
+59                      FQNALLVR                2           449
+60                    LVNEVTEFAK                2           449
+61                     QTALVELVK                2           449
+62              RPCFSALEVDETYVPK                3           449
+63             VFDEFKPLVEEPQNLIK                2           449
+64             VFDEFKPLVEEPQNLIK                3           449
+65                  YICENQDSISSK                2           449
+66                  AFYVNVLNEEQR                2          44.9
+67                 DPILFPSFIHSQK                2          44.9
+68                 DPILFPSFIHSQK                3          44.9
+69                 FNTANDDNVTQVR                2          44.9
+70              GAGAFGYFEVTHDITK                2          44.9
+71              GAGAFGYFEVTHDITK                3          44.9
+72                     LFAYPDTHR                2          44.9
+73                     LFAYPDTHR                3          44.9
+74               LGPNYLHIPVNCPYR                3          44.9
+75                  LVNANGEAVYCK                2          44.9
+76              NAIHTFVQSGSHLAAR                2          44.9
+77              NAIHTFVQSGSHLAAR                3          44.9
+78                     NLSVEDAAR                2          44.9
+79                       FEEILTR                2          4.49
+80                GGDDLDPNYVLSSR                2          4.49
+81         GTGGVDTAAVGSVFDVSNADR                2          4.49
+82             LGSSEVEQVQLVVDGVK                2          4.49
+83                LNYKPEEEYPDLSK                2          4.49
+84                LNYKPEEEYPDLSK                3          4.49
+85                LSVEALNSLTGEFK                2          4.49
+86                      AALEELVK                2          4.49
+87                  ASAELIEEEVAK                2          4.49
+88                    DQGGELLSLR                2          4.49
+89                HGAEVIDTPVFELK                2          4.49
+90                HGAEVIDTPVFELK                3          4.49
+91        IGDYVQQHGGVSLVEQLLQDPK                3          4.49
+92                 TTETQVLVASAQK                2          4.49
+93                     YDLTVPFAR                2          4.49
+94                    ALIVLAHSER                2          44.9
+95                    ALIVLAHSER                3          44.9
+96                 EGHLSPDIVAEQK                2          44.9
+97                 EGHLSPDIVAEQK                3          44.9
+98                      IQILEGWK                2          44.9
+99                      TSFNYAMK                2          44.9
+100                    NVAVDELSR                2          4.49
+101           VLAPQISFAPEIASEEER                2          4.49
+102           VLAPQISFAPEIASEEER                3          4.49
+103                  VLIVYAHQEPK                2          4.49
+104                  VLIVYAHQEPK                3          4.49
+105                   DLLHVLAFSK                2           449
+106                   DLLHVLAFSK                3           449
+107                INDISHTQSVSSK                2           449
+108                INDISHTQSVSSK                3           449
+109           MDQTLAVYQQILTSMPSR                3           449
+110                NVIQISNDLENLR                2           449
+111                NVIQISNDLENLR                3           449
+112           VTGLDFIPGLHPILTLSK                2           449
+113           VTGLDFIPGLHPILTLSK                3           449
+114                IEADSESQEDIIR                2         0.449
+115                    ATNYNAGDR                2          4.49
+116                 GISLANWMCLAK                2          4.49
+117                      LGMDGYR                2          4.49
+118 TPGAVNACHLSCSALLQDNIADAVACAK                3          4.49
+119                     WESGYNTR                2          4.49
+120       SNFLNCYVSGFHPSDIEVDLLK                3         0.449
+121                   VNHVTLSQPK                2         0.449
+122                   VNHVTLSQPK                3         0.449
+123                  EGMNIVEAMER                2          44.9
+124                    FEDENFILK                2          44.9
+125               IIPGFMCQGGDFTR                2          44.9
+126                      TEWLDGK                2          44.9
+127                    VSFELFADK                2          44.9
+128                    ESTLHLVLR                2           449
+129                    ESTLHLVLR                3           449
+130             TITLEVEPSDTIENVK                2           449
+131                    TLSDYNIQK                2           449
+132                      FLFEGQR                2          44.9
+133                    LTQSMAIIR                2          44.9
+134                    QGVPMNSLR                2          44.9
+135                 VIGQDSSEIHFK                2          44.9
+136                 VIGQDSSEIHFK                3          44.9
+137        YIAWPLQGWQATFGGGDHPPK                3          44.9
+138                 EFTPPVQAAYQK                2           449
+139          FFESFGDLSTPDAVMGNPK                2           449
+140                    LHVDPENFR                2           449
+141                    LHVDPENFR                3           449
+142                   LLVVYPWTQR                2           449
+143                     VHLTPEEK                2           449
+144             VLGAFSDGLAHLDNLK                2           449
+145             VLGAFSDGLAHLDNLK                3           449
+146                VNVDEVGGEALGR                2           449
+147                 VVAGVANALAHK                2           449
+148                 VVAGVANALAHK                3           449
+149                    MFLSFPTTK                2           449
+150             TYFPHFDLSHGSAQVK                2           449
+151             TYFPHFDLSHGSAQVK                3           449
+152                      VDPVNFK                2           449
+153              VGAHAGEYGAEALER                2           449
+154              VGAHAGEYGAEALER                3           449
+155                     ADEGISFR                2          44.9
+156                     GLFIIDDK                2          44.9
+157                   LVQAFQFTDK                2          44.9
+158                  QITVNDLPVGR                2          44.9
+159                   TIAQDYGVLK                2          44.9
+    peptide_intensity
+1          114462.667
+2           43780.500
+3          161978.667
+4          257581.667
+5         6991767.000
+6         2152459.000
+7        13113548.667
+8          913342.333
+9         1189364.000
+10       11974505.000
+11        4045589.667
+12         307874.000
+13         106052.000
+14         104507.833
+15          80093.833
+16         568833.667
+17        8569949.667
+18       25460282.000
+19       28568480.667
+20       16652541.667
+21       21725352.667
+22       37676253.333
+23       17609389.000
+24        3951486.333
+25         437893.667
+26       17784180.667
+27       25882206.333
+28        7208210.500
+29        8968420.667
+30       15588755.000
+31       22443725.333
+32        2145055.333
+33       14716619.000
+34        7807785.667
+35       17482423.667
+36          19404.333
+37          74258.333
+38          63101.333
+39       60670316.667
+40          22536.000
+41          46324.000
+42        3684505.000
+43          74352.000
+44         110885.000
+45          69104.667
+46        1142502.667
+47         459295.667
+48         515593.000
+49         632950.333
+50        1809386.667
+51        9793640.333
+52         670395.000
+53         120428.333
+54          61078.500
+55         119522.667
+56         113786.333
+57         193290.333
+58       19889342.333
+59       73089941.667
+60       35516393.667
+61       24499944.000
+62        7979479.667
+63        6676686.000
+64       66764209.833
+65       38683439.667
+66        4132338.000
+67         724432.667
+68         649076.167
+69        3371683.333
+70         832829.333
+71        2303601.333
+72        3486194.500
+73        1588506.833
+74        3074869.000
+75        1192006.333
+76          63168.667
+77         423062.000
+78        5000338.667
+79         387414.333
+80         329493.000
+81         162739.667
+82         232968.000
+83          55588.000
+84         549538.000
+85         232766.000
+86         278020.333
+87         695690.333
+88         284204.667
+89          93361.667
+90         142269.167
+91         206419.000
+92         274470.333
+93         391611.667
+94         934322.667
+95        2309451.500
+96         849879.333
+97        1297497.667
+98         270146.000
+99         653256.000
+100        337449.333
+101        311226.333
+102        118129.333
+103         90460.500
+104        589519.667
+105       8358047.167
+106       8841519.667
+107      11341209.000
+108      12986979.000
+109       1359312.667
+110      28657459.667
+111        307334.333
+112       2664756.833
+113      43289065.167
+114         19155.333
+115        164348.667
+116        170885.000
+117        147868.333
+118        256876.000
+119        236057.000
+120          6543.333
+121         49325.000
+122         49716.667
+123        702563.667
+124       1061301.667
+125      11580894.333
+126       2199387.667
+127        218830.667
+128       6958715.000
+129      16932987.833
+130      18537309.667
+131      26079521.333
+132       4608205.000
+133       1234254.000
+134       1090341.333
+135        930356.667
+136        452304.000
+137       7367058.000
+138      15002957.833
+139       1772142.667
+140       1429487.000
+141        171733.000
+142      22825749.333
+143      13705634.000
+144       1456951.000
+145      20128782.667
+146      24618285.000
+147       3377765.000
+148       1552218.333
+149       3756792.667
+150       3576946.333
+151      22574059.667
+152       1731657.333
+153       4051053.667
+154      17080367.333
+155       3852184.667
+156       2157911.667
+157       2397813.667
+158       5444638.667
+159       4467382.667
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ProteinInference")
+> ### * ProteinInference
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ProteinInference
+> ### Title: Protein inference for aLFQ import data frame
+> ### Aliases: ProteinInference ProteinInference.default
+> ### Keywords: ProteinInference label-free quantification peptide inference
+> ###   protein inference SCAMPI
+> 
+> ### ** Examples
+> 
+> data(UPS2MS)
+> 
+> data_ProteinInference <- ProteinInference(UPS2_SRM)
+> print(data_ProteinInference)
+     run_id                protein_id concentration    response
+1  UPS2_SRM  O76070ups|SYUG_HUMAN_UPS         0.449   138220.67
+2  UPS2_SRM  P00167ups|CYB5_HUMAN_UPS          44.9 12544026.83
+3  UPS2_SRM P00709ups|LALBA_HUMAN_UPS          4.49   438353.83
+4  UPS2_SRM  P00915ups|CAH1_HUMAN_UPS           449 33122367.00
+5  UPS2_SRM  P00918ups|CAH2_HUMAN_UPS           449 24162965.83
+6  UPS2_SRM  P01008ups|ANT3_HUMAN_UPS         0.449    68679.83
+7  UPS2_SRM P01127ups|PDGFB_HUMAN_UPS         0.449    34430.00
+8  UPS2_SRM  P01344ups|IGF2_HUMAN_UPS         0.449    92618.50
+9  UPS2_SRM   P02144ups|MYG_HUMAN_UPS          44.9  5801513.50
+10 UPS2_SRM P02753ups|RETBP_HUMAN_UPS          4.49   431842.67
+11 UPS2_SRM  P02768ups|ALBU_HUMAN_UPS           449 69927075.75
+12 UPS2_SRM  P04040ups|CATA_HUMAN_UPS          44.9  4566338.33
+13 UPS2_SRM  P06732ups|KCRM_HUMAN_UPS          4.49   468476.17
+14 UPS2_SRM  P12081ups|SYHC_HUMAN_UPS          4.49   543651.00
+15 UPS2_SRM  P15559ups|NQO1_HUMAN_UPS          44.9  1803474.58
+16 UPS2_SRM  P16083ups|NQO2_HUMAN_UPS          4.49   463484.50
+17 UPS2_SRM   P41159ups|LEP_HUMAN_UPS           449 35973262.42
+18 UPS2_SRM  P61626ups|LYSC_HUMAN_UPS          4.49   246466.50
+19 UPS2_SRM  P61769ups|B2MG_HUMAN_UPS         0.449    49520.83
+20 UPS2_SRM  P62937ups|PPIA_HUMAN_UPS          44.9  6890141.00
+21 UPS2_SRM  P62988ups|UBIQ_HUMAN_UPS           449 22308415.50
+22 UPS2_SRM P63165ups|SUMO1_HUMAN_UPS          44.9  5987631.50
+23 UPS2_SRM   P68871ups|HBB_HUMAN_UPS           449 23722017.17
+24 UPS2_SRM   P69905ups|HBA_HUMAN_UPS           449 19827213.50
+25 UPS2_SRM Q06830ups|PRDX1_HUMAN_UPS          44.9  4956010.67
+> 
+> 
+> 
+> cleanEx()
+> nameEx("UPS2MS")
+> ### * UPS2MS
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: UPS2MS
+> ### Title: Calculating absolute and relative protein abundance from mass
+> ###   spectrometry-based protein expression data.
+> ### Aliases: UPS2MS UPS2 UPS2_SC UPS2_LFQ UPS2_SRM
+> ### Keywords: datasets UPS2
+> 
+> ### ** Examples
+> 
+> data(UPS2MS)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("aLFQ.package")
+> ### * aLFQ.package
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: aLFQ-package
+> ### Title: aLFQ
+> ### Aliases: aLFQ-package aLFQ
+> ### Keywords: aLFQ
+> 
+> ### ** Examples
+> 
+> ## Not run: help(package="aLFQ")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("aa.index")
+> ### * aa.index
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: aa.index
+> ### Title: AAindex: Amino Acid Index Database
+> ### Aliases: aa.index
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> ## Load AAindex data
+> data(aa.index)
+> 
+> ## Find all indeces described as "volume"
+> ind <- which(sapply(aa.index, function(x)
++                     length(grep("volume", x$D, ignore.case=TRUE)) != 0))
+> 
+> ## find all indeces with author "Kyte"
+> ind <- which(sapply(aa.index, function(x) length(grep("Kyte", x$A)) != 0))
+> 
+> ## examine the index
+> aa.index[[ind]]$I
+   A    R    N    D    C    Q    E    G    H    I    L    K    M    F    P    S 
+ 1.8 -4.5 -3.5 -3.5  2.5 -3.5 -3.5 -0.4 -3.2  4.5  3.8 -3.9  1.9  2.8 -1.6 -0.8 
+   T    W    Y    V 
+-0.7 -0.9 -1.3  4.2 
+> 
+> ## find indeces which correlate with it
+> all.ind <- names(which(Mod(aa.index[[ind]]$C) >= 0.88))
+> 
+> ## examine them all
+> sapply(all.ind, function (x) aa.index[[x]]$I)
+  JURD980101 CHOC760103 OLSK800101 JANJ780102 NADH010102 NADH010101 DESM900102
+A       1.10       0.38       1.38         51         51         58       1.26
+R      -5.10       0.01       0.00          5       -144       -184       0.38
+N      -3.50       0.12       0.37         22        -84        -93       0.59
+D      -3.60       0.15       0.52         19        -78        -97       0.27
+C       2.50       0.45       1.43         74        137        116       1.60
+Q      -3.68       0.07       0.22         16       -128       -139       0.39
+E      -3.20       0.18       0.71         16       -115       -131       0.23
+G      -0.64       0.36       1.34         52        -13        -11       1.08
+H      -3.20       0.17       0.66         34        -55        -73       1.00
+I       4.50       0.60       2.32         66        106        107       1.44
+L       3.80       0.45       1.47         60        103         95       1.36
+K      -4.11       0.03       0.15          3       -205        -24       0.33
+M       1.90       0.40       1.78         52         73         78       1.52
+F       2.80       0.50       1.72         58        108         92       1.46
+P      -1.90       0.18       0.85         25        -79        -79       0.54
+S      -0.50       0.22       0.86         35        -26        -34       0.98
+T      -0.70       0.23       0.89         30         -3         -7       1.01
+W      -0.46       0.27       0.82         49         69         59       1.06
+Y      -1.30       0.15       0.47         24         11        -11       0.89
+V       4.20       0.54       1.99         64        108        100       1.33
+  EISD860103 CHOC760104 NADH010103 WOLR810101 RADA880101 MANP780101 KUHL950101
+A       0.00       0.20         41       1.94       1.81      12.97       0.78
+R      -0.96       0.00       -109     -19.92     -14.92      11.72       1.58
+N      -0.86       0.03        -74      -9.68      -6.64      11.42       1.20
+D      -0.98       0.04        -47     -10.95      -8.72      10.85       1.35
+C       0.76       0.22        169      -1.24       1.28      14.63       0.55
+Q      -1.00       0.01       -104      -9.38      -5.54      11.76       1.19
+E      -0.89       0.03        -90     -10.20      -6.81      11.89       1.45
+G       0.00       0.18        -18       2.39       0.94      12.43       0.68
+H      -0.75       0.02        -35     -10.27      -4.66      12.16       0.99
+I       0.99       0.19        104       2.15       4.92      15.67       0.47
+L       0.89       0.16        103       2.28       4.92      14.90       0.56
+K      -0.99       0.00       -148      -9.52      -5.55      11.36       1.10
+M       0.94       0.11         77      -1.48       2.35      14.39       0.66
+F       0.92       0.14        128      -0.76       2.98      14.00       0.47
+P       0.22       0.04        -81      -3.68       0.00      11.37       0.69
+S      -0.67       0.08        -31      -5.06      -3.40      11.23       1.00
+T       0.09       0.08         10      -4.88      -2.57      11.69       1.05
+W       0.67       0.04        102      -5.88       2.33      13.93       0.70
+Y      -0.93       0.03         36      -6.11      -0.14      13.42       1.00
+V       0.84       0.18        116       1.99       4.04      15.71       0.51
+  GUYH850105 OOBM770101
+A      -0.27     -1.895
+R       2.00     -1.475
+N       0.61     -1.560
+D       0.50     -1.518
+C      -0.23     -2.035
+Q       1.00     -1.521
+E       0.33     -1.535
+G      -0.22     -1.898
+H       0.37     -1.755
+I      -0.80     -1.951
+L      -0.44     -1.966
+K       1.17     -1.374
+M      -0.31     -1.963
+F      -0.55     -1.864
+P       0.36     -1.699
+S       0.17     -1.753
+T       0.18     -1.767
+W       0.05     -1.869
+Y       0.48     -1.686
+V      -0.65     -1.981
+> 
+> 
+> 
+> cleanEx()
+> nameEx("apexFeatures")
+> ### * apexFeatures
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: apexFeatures
+> ### Title: Calculation of physicochemical amino acid properties for APEX
+> ### Aliases: apexFeatures apexFeatures.default print.apexFeatures
+> ### Keywords: AAIndex PeptideSieve APEX
+> 
+> ### ** Examples
+> 
+> data(APEXMS)
+> 
+> # APEX_ORBI
+> APEX_ORBI<-head(APEX_ORBI,20) # Remove this line for real applications
+> APEX_ORBI.af <- apexFeatures(APEX_ORBI)
+> print(APEX_ORBI.af)
+apexFeatures
+Features: 69
+Dataset size: 20
+> 
+> # APEX_LCQ
+> APEX_LCQ<-head(APEX_LCQ,20) # Remove this line for real applications
+> APEX_LCQ.af <- apexFeatures(APEX_LCQ)
+> print(APEX_LCQ.af)
+apexFeatures
+Features: 69
+Dataset size: 20
+> 
+> 
+> 
+> cleanEx()
+> nameEx("import")
+> ### * import
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: import
+> ### Title: import of mass spectrometry proteomics data analysis software
+> ###   reports.
+> ### Aliases: import import.default
+> ### Keywords: OpenSWATH mProphet OpenMS LFQ Skyline Abacus
+> 
+> ### ** Examples
+> 
+> import(ms_filenames = system.file("extdata","example_openswath.txt",package="aLFQ"),
++ ms_filetype = "openswath", concentration_filename=NA,
++ averageruns=FALSE, sumruns=FALSE, mprophet_cutoff=0.01,
++ openswath_superimpose_identifications=FALSE, openswath_replace_run_id=FALSE,
++ openswath_filtertop=FALSE, openswath_removedecoys=TRUE)
+   run_id protein_id  peptide_id                      transition_id
+1       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212211_DIQHWESLKPEER_4
+2       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212218_DIQHWESLKPEER_4
+3       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212212_DIQHWESLKPEER_4
+4       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212208_DIQHWESLKPEER_4
+5       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212221_DIQHWESLKPEER_4
+6       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212211_DIQHWESLKPEER_4
+7       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212218_DIQHWESLKPEER_4
+8       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212212_DIQHWESLKPEER_4
+9       0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212208_DIQHWESLKPEER_4
+10      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212221_DIQHWESLKPEER_4
+11      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212211_DIQHWESLKPEER_4
+12      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212218_DIQHWESLKPEER_4
+13      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212212_DIQHWESLKPEER_4
+14      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212208_DIQHWESLKPEER_4
+15      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212221_DIQHWESLKPEER_4
+16      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212211_DIQHWESLKPEER_4
+17      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212218_DIQHWESLKPEER_4
+18      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212212_DIQHWESLKPEER_4
+19      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212208_DIQHWESLKPEER_4
+20      0   PROTEINA ANDPEPTIDEA ANDPEPTIDEA 212221_DIQHWESLKPEER_4
+21      0   PROTEINA    PEPTIDEB    PEPTIDEB 212211_DIQHWESLKPEER_4
+22      0   PROTEINA    PEPTIDEB    PEPTIDEB 212218_DIQHWESLKPEER_4
+23      0   PROTEINA    PEPTIDEB    PEPTIDEB 212212_DIQHWESLKPEER_4
+24      0   PROTEINA    PEPTIDEB    PEPTIDEB 212208_DIQHWESLKPEER_4
+25      0   PROTEINA    PEPTIDEB    PEPTIDEB 212221_DIQHWESLKPEER_4
+26      0   PROTEINA    PEPTIDEB    PEPTIDEB 212211_DIQHWESLKPEER_4
+27      0   PROTEINA    PEPTIDEB    PEPTIDEB 212218_DIQHWESLKPEER_4
+28      0   PROTEINA    PEPTIDEB    PEPTIDEB 212212_DIQHWESLKPEER_4
+29      0   PROTEINA    PEPTIDEB    PEPTIDEB 212208_DIQHWESLKPEER_4
+30      0   PROTEINA    PEPTIDEB    PEPTIDEB 212221_DIQHWESLKPEER_4
+31      0   PROTEINA    PEPTIDEK    PEPTIDEK 212211_DIQHWESLKPEER_4
+32      0   PROTEINA    PEPTIDEK    PEPTIDEK 212218_DIQHWESLKPEER_4
+33      0   PROTEINA    PEPTIDEK    PEPTIDEK 212212_DIQHWESLKPEER_4
+34      0   PROTEINA    PEPTIDEK    PEPTIDEK 212208_DIQHWESLKPEER_4
+35      0   PROTEINA    PEPTIDEK    PEPTIDEK 212221_DIQHWESLKPEER_4
+   peptide_sequence precursor_charge transition_intensity concentration
+1       ANDPEPTIDEA                2                 6496             ?
+2       ANDPEPTIDEA                2                 2966             ?
+3       ANDPEPTIDEA                2                 2509             ?
+4       ANDPEPTIDEA                2                 1137             ?
+5       ANDPEPTIDEA                2                 1582             ?
+6       ANDPEPTIDEA                2                 6496             ?
+7       ANDPEPTIDEA                2                 2966             ?
+8       ANDPEPTIDEA                2                 2509             ?
+9       ANDPEPTIDEA                2                 1137             ?
+10      ANDPEPTIDEA                2                 1582             ?
+11      ANDPEPTIDEA                2                 6496             ?
+12      ANDPEPTIDEA                2                 2966             ?
+13      ANDPEPTIDEA                2                 2509             ?
+14      ANDPEPTIDEA                2                 1137             ?
+15      ANDPEPTIDEA                2                 1582             ?
+16      ANDPEPTIDEA                2                 6496             ?
+17      ANDPEPTIDEA                2                 2966             ?
+18      ANDPEPTIDEA                2                 2509             ?
+19      ANDPEPTIDEA                2                 1137             ?
+20      ANDPEPTIDEA                2                 1582             ?
+21         PEPTIDEB                2                 6496             ?
+22         PEPTIDEB                2                 2966             ?
+23         PEPTIDEB                2                 2509             ?
+24         PEPTIDEB                2                 1137             ?
+25         PEPTIDEB                2                 1582             ?
+26         PEPTIDEB                2                 2028             ?
+27         PEPTIDEB                2                 3550             ?
+28         PEPTIDEB                2                 7007             ?
+29         PEPTIDEB                2                  591             ?
+30         PEPTIDEB                2                 2464             ?
+31         PEPTIDEK                2                 6496             ?
+32         PEPTIDEK                2                 2966             ?
+33         PEPTIDEK                2                 2509             ?
+34         PEPTIDEK                2                 1137             ?
+35         PEPTIDEK                2                 1582             ?
+> 
+> import(ms_filenames = system.file("extdata","example_mprophet.txt",package="aLFQ"),
++ ms_filetype = "mprophet",
++ concentration_filename = system.file("extdata","example_concentration_peptide.csv",
++ package="aLFQ"), averageruns=FALSE, sumruns=FALSE, mprophet_cutoff=0.01)
+             run_id  peptide_id protein_id     transition_id peptide_sequence
+1  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y7_1      ANDPEPTIDEA
+2  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y8_1      ANDPEPTIDEA
+3  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y9_1      ANDPEPTIDEA
+4  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y9_2      ANDPEPTIDEA
+5  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y7_1      ANDPEPTIDEA
+6  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y8_1      ANDPEPTIDEA
+7  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y6_1      ANDPEPTIDEA
+8  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y8_1      ANDPEPTIDEA
+9  REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y9_1      ANDPEPTIDEA
+10 REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA ANDPEPTIDEA y10_1      ANDPEPTIDEA
+11 REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y6_1      ANDPEPTIDEA
+12 REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y7_1      ANDPEPTIDEA
+13 REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA  ANDPEPTIDEA y9_1      ANDPEPTIDEA
+14 REPLICATE1.mzXML ANDPEPTIDEA   PROTEINA ANDPEPTIDEA y10_1      ANDPEPTIDEA
+15 REPLICATE1.mzXML    PEPTIDEC   PROTEINB     PEPTIDEC y8_1         PEPTIDEC
+16 REPLICATE1.mzXML    PEPTIDEC   PROTEINB     PEPTIDEC y6_1         PEPTIDEC
+17 REPLICATE1.mzXML    PEPTIDEC   PROTEINB     PEPTIDEC y8_1         PEPTIDEC
+18 REPLICATE1.mzXML    PEPTIDEC   PROTEINB     PEPTIDEC y6_1         PEPTIDEC
+19 REPLICATE1.mzXML    PEPTIDEC   PROTEINB     PEPTIDEC y8_1         PEPTIDEC
+20 REPLICATE1.mzXML    PEPTIDEC   PROTEINB     PEPTIDEC y6_1         PEPTIDEC
+21 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y8_1         PEPTIDEK
+22 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y4_1         PEPTIDEK
+23 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK b8_1         PEPTIDEK
+24 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y9_1         PEPTIDEK
+25 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y8_1         PEPTIDEK
+26 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y4_1         PEPTIDEK
+27 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y8_1         PEPTIDEK
+28 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y4_1         PEPTIDEK
+29 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK b8_1         PEPTIDEK
+30 REPLICATE1.mzXML    PEPTIDEK   PROTEINA     PEPTIDEK y9_1         PEPTIDEK
+   precursor_charge transition_intensity concentration
+1                 2            1828435.7             ?
+2                 2            1537762.3             ?
+3                 2            1469749.2             ?
+4                 2             892880.2             ?
+5                 2              75056.0             ?
+6                 2              75092.3             ?
+7                 2              19479.0             ?
+8                 2              12672.0             ?
+9                 2              12041.3             ?
+10                2               9263.7             ?
+11                2              25792.3             ?
+12                2              12468.0             ?
+13                2              16018.0             ?
+14                2               7566.0             ?
+15                2            3832324.2             ?
+16                2            2285569.5             ?
+17                2              19641.2             ?
+18                2              11257.5             ?
+19                2              16919.7             ?
+20                2              13021.0             ?
+21                2            6720641.3             ?
+22                2            2819920.0             ?
+23                2            1497260.0             ?
+24                2            1006629.0             ?
+25                2              99099.7             ?
+26                2              50107.7             ?
+27                2              41169.7             ?
+28                2              12812.3             ?
+29                2              86065.7             ?
+30                2              54471.7             ?
+> 
+> import(ms_filenames = system.file("extdata","example_openmslfq.csv",package="aLFQ"),
++ ms_filetype = "openmslfq", concentration_filename=NA, averageruns=FALSE, sumruns=FALSE)
+       run_id protein_id  peptide_id peptide_sequence precursor_charge
+1 abundance_1   PROTEINA ANDPEPTIDEA      ANDPEPTIDEA                2
+2 abundance_1   PROTEINA    PEPTIDEK         PEPTIDEK                2
+3 abundance_1   PROTEINB    PEPTIDEC         PEPTIDEC                2
+4 abundance_0   PROTEINA ANDPEPTIDEA      ANDPEPTIDEA                2
+5 abundance_0   PROTEINA    PEPTIDEK         PEPTIDEK                2
+6 abundance_0   PROTEINB    PEPTIDEC         PEPTIDEC                2
+  peptide_intensity concentration
+1            826176             ?
+2          14868800             ?
+3          34042400             ?
+4                 0             ?
+5                 0             ?
+6          33894200             ?
+> 
+> import(ms_filenames = system.file("extdata","example_skyline.csv",package="aLFQ"),
++ ms_filetype = "skyline",
++ concentration_filename =
++ system.file("extdata","example_concentration_protein.csv",package="aLFQ"),
++ averageruns=FALSE, sumruns=FALSE)
+   protein_id     run_id  peptide_id transition_id peptide_sequence
+1    PROTEINA REPLICATE1 ANDPEPTIDEA            y6      ANDPEPTIDEA
+2    PROTEINA REPLICATE1 ANDPEPTIDEA            y6      ANDPEPTIDEA
+3    PROTEINA REPLICATE1 ANDPEPTIDEA            y5      ANDPEPTIDEA
+4    PROTEINA REPLICATE1 ANDPEPTIDEA            y6      ANDPEPTIDEA
+5    PROTEINA REPLICATE1 ANDPEPTIDEA            y6      ANDPEPTIDEA
+6    PROTEINA REPLICATE1 ANDPEPTIDEA            y6      ANDPEPTIDEA
+7    PROTEINA REPLICATE1 ANDPEPTIDEA            y6      ANDPEPTIDEA
+8    PROTEINA REPLICATE1    PEPTIDEK            y7         PEPTIDEK
+9    PROTEINA REPLICATE1    PEPTIDEB            y7         PEPTIDEB
+10   PROTEINA REPLICATE1    PEPTIDEB            y7         PEPTIDEB
+11   PROTEINA REPLICATE1    PEPTIDEB            y6         PEPTIDEB
+12   PROTEINA REPLICATE1    PEPTIDEB            y6         PEPTIDEB
+13   PROTEINA REPLICATE1 ANDPEPTIDEA            y5      ANDPEPTIDEA
+14   PROTEINA REPLICATE1 ANDPEPTIDEA            y5      ANDPEPTIDEA
+15   PROTEINA REPLICATE1 ANDPEPTIDEA            y3      ANDPEPTIDEA
+16   PROTEINA REPLICATE1 ANDPEPTIDEA            y3      ANDPEPTIDEA
+17   PROTEINA REPLICATE1 ANDPEPTIDEA            y3      ANDPEPTIDEA
+18   PROTEINA REPLICATE1    PEPTIDEB            y4         PEPTIDEB
+19   PROTEINA REPLICATE1    PEPTIDEB            y4         PEPTIDEB
+20   PROTEINA REPLICATE1    PEPTIDEB            y3         PEPTIDEB
+21   PROTEINA REPLICATE1    PEPTIDEB            y3         PEPTIDEB
+22   PROTEINA REPLICATE1    PEPTIDEB            y3         PEPTIDEB
+23   PROTEINA REPLICATE1    PEPTIDEB            y6         PEPTIDEB
+24   PROTEINA REPLICATE1    PEPTIDEB            y6         PEPTIDEB
+25   PROTEINA REPLICATE1    PEPTIDEB            y6         PEPTIDEB
+26   PROTEINA REPLICATE1    PEPTIDEB            y6         PEPTIDEB
+27   PROTEINA REPLICATE1    PEPTIDEB            y5         PEPTIDEB
+28   PROTEINA REPLICATE1    PEPTIDEB            y5         PEPTIDEB
+29   PROTEINA REPLICATE1    PEPTIDEB            y5         PEPTIDEB
+30   PROTEINA REPLICATE1    PEPTIDEB            y4         PEPTIDEB
+31   PROTEINB REPLICATE2    PEPTIDEC            y6         PEPTIDEC
+32   PROTEINB REPLICATE2    PEPTIDEC            y6         PEPTIDEC
+33   PROTEINB REPLICATE2    PEPTIDEC            y6         PEPTIDEC
+34   PROTEINB REPLICATE2    PEPTIDEC            y5         PEPTIDEC
+35   PROTEINB REPLICATE2    PEPTIDEC            b3         PEPTIDEC
+36   PROTEINB REPLICATE2    PEPTIDEC            b3         PEPTIDEC
+37   PROTEINB REPLICATE2    PEPTIDEC            b3         PEPTIDEC
+38   PROTEINB REPLICATE2    PEPTIDEC            y8         PEPTIDEC
+39   PROTEINB REPLICATE2    PEPTIDEC            y8         PEPTIDEC
+40   PROTEINB REPLICATE2    PEPTIDEC            y8         PEPTIDEC
+41   PROTEINB REPLICATE2    PEPTIDEC            y7         PEPTIDEC
+42   PROTEINB REPLICATE2    PEPTIDEC            y7         PEPTIDEC
+43   PROTEINB REPLICATE2    PEPTIDEC            y7         PEPTIDEC
+44   PROTEINB REPLICATE2    PEPTIDEC            y5         PEPTIDEC
+45   PROTEINB REPLICATE2    PEPTIDEC            y5         PEPTIDEC
+46   PROTEINB REPLICATE2    PEPTIDEC            y4         PEPTIDEC
+47   PROTEINB REPLICATE2    PEPTIDEC            y4         PEPTIDEC
+48   PROTEINB REPLICATE2    PEPTIDEC            y4         PEPTIDEC
+   precursor_charge transition_intensity concentration
+1                 2                28743            12
+2                 2                25763            12
+3                 2                91203            12
+4                 2                21827            12
+5                 2                 6725            12
+6                 2                 7264            12
+7                 2                 4394            12
+8                 2                 2396            12
+9                 2                 2596            12
+10                2                 3644            12
+11                2                14649            12
+12                2                17255            12
+13                2                92042            12
+14                2                83372            12
+15                2                 7816            12
+16                2                12404            12
+17                2                 9193            12
+18                2                26914            12
+19                2                21079            12
+20                2                 5309            12
+21                2                 5177            12
+22                2                 5776            12
+23                2                 8324            12
+24                2                 6029            12
+25                2                 5636            12
+26                2                15238            12
+27                2                10293            12
+28                2                 9833            12
+29                2                11155            12
+30                2                18502            12
+31                2                49564             ?
+32                2                56384             ?
+33                2                41803             ?
+34                2                13666             ?
+35                2                15751             ?
+36                2                17578             ?
+37                2                13887             ?
+38                2                79795             ?
+39                2                77217             ?
+40                2                91495             ?
+41                2                34776             ?
+42                2                28140             ?
+43                2                26762             ?
+44                2                23772             ?
+45                2                23587             ?
+46                2                14318             ?
+47                2                18425             ?
+48                2                19070             ?
+> 
+> import(ms_filenames = system.file("extdata","example_abacus_protein.txt",package="aLFQ"),
++ ms_filetype = "abacus", concentration_filename =
++ system.file("extdata","example_concentration_protein.csv",
++ package="aLFQ"), averageruns=FALSE, sumruns=FALSE,
++ peptideprophet_cutoff=0.95, abacus_column="ADJNSAF")
+  protein_id     run_id protein_intensity concentration
+1   PROTEINA REPLICATE1                 0            12
+2   PROTEINB REPLICATE1                 0             ?
+> 
+> 
+> 
+> cleanEx()
+> nameEx("proteotypic")
+> ### * proteotypic
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: proteotypic
+> ### Title: Prediction of the flyability of proteotypic peptides
+> ### Aliases: proteotypic proteotypic.default
+> ### Keywords: APEX proteotypic peptides flyability high-flyers
+> 
+> ### ** Examples
+> 
+> set.seed(131)
+> 
+> data(APEXMS)
+> 
+> APEX_ORBI<-head(APEX_ORBI,20) # Remove this line for real applications
+> APEX_ORBI.af <- apexFeatures(APEX_ORBI)
+> APEX_ORBI.apex <- APEX(data=APEX_ORBI.af)
+> 
+> peptides <- proteotypic(fasta=system.file("extdata","example.fasta",package="aLFQ"),
++ apex_model=APEX_ORBI.apex, min_aa=4 , max_aa=20)
+> ## Not run: print(peptides)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  5.695 0.307 6.005 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
