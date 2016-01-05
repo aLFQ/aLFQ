@@ -51,7 +51,7 @@ The ALF module enables model selection for TopN transitions and peptides for pro
   The reports specified in the function call.
 }
 \references{
-  Ludwig, C., Claassen, M., Schmidt, A. & Aebersold, R. \emph{Estimation of Absolute Protein Quantities of Unlabeled Samples by Selected Reaction Monitoring Mass Spectrometry.} Molecular & Cellular Proteomics 11, M111.013987-M111.013987 (2012).
+  Ludwig, C., Claassen, M., Schmidt, A. \& Aebersold, R. \emph{Estimation of Absolute Protein Quantities of Unlabeled Samples by Selected Reaction Monitoring Mass Spectrometry.} Molecular \& Cellular Proteomics 11, M111.013987-M111.013987 (2012).
 }
 \author{George Rosenberger \email{rosenberger@imsb.biol.ethz.ch}}
 

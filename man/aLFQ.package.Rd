@@ -4,20 +4,20 @@
 \docType{package}
 
 \title{aLFQ}
-\description{An R-package for estimating absolute protein quantities from label-free LC-MS/MS proteomics data.}
+\description{Estimating Absolute Protein Quantities from Label-Free LC-MS/MS Proteomics Data}
 \details{
 \tabular{ll}{
 Package: \tab aLFQ\cr
 Type: \tab Package\cr
-Version: \tab 1.3.2\cr
-Date: \tab 2014-09-29\cr
-Author: \tab George Rosenberger, Hannes Roest, Christina Ludwig. AAindex: Barry Grant.\cr
+Version: \tab 1.3.3\cr
+Date: \tab 2016-01-05\cr
+Author: \tab George Rosenberger, Hannes Roest, Christina Ludwig, Ruedi Aebersold, Lars Malmstroem\cr
 Maintainer: \tab George Rosenberger <rosenberger@imsb.biol.ethz.ch>\cr
 Depends: \tab R (>= 2.15.0)\cr
-Imports: \tab data.table, plyr, caret, seqinr, lattice, randomForest, ROCR, reshape2, protiq\cr
+Imports: \tab data.table, plyr, caret, seqinr, lattice, randomForest, ROCR, reshape2, protiq, bio3d\cr
 Suggests: \tab testthat\cr
 License: \tab GPL version 3 or newer\cr
-URL: \tab \url{http://www.imsb.ethz.ch}\cr
+URL: \tab \url{https://github.com/aLFQ}\cr
 NeedsCompilation: \tab no\cr
 Repository: \tab CRAN\cr
 }

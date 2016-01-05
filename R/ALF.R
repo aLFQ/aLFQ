@@ -1,7 +1,7 @@
 ALF <- function(data, ...) UseMethod("ALF")
 # This function implements the workflow used by (1) to select a suitable model for absolute label-free quantification.
 
-# 1.	Ludwig, C., Claassen, M., Schmidt, A. & Aebersold, R. Estimation of Absolute Protein Quantities of Unlabeled Samples by Selected Reaction Monitoring Mass Spectrometry. Molecular \& Cellular Proteomics 11, M111.013987–M111.013987 (2012).
+# 1.	Ludwig, C., Claassen, M., Schmidt, A. \& Aebersold, R. Estimation of Absolute Protein Quantities of Unlabeled Samples by Selected Reaction Monitoring Mass Spectrometry. Molecular \& Cellular Proteomics 11, M111.013987-M111.013987 (2012).
 
 ALF.default <- function(data, report_filename="ALF_report.pdf", prediction_filename="ALF_prediction.csv", peptide_methods = c("top"), peptide_topx = c(1,2,3), peptide_strictness = "loose", peptide_summary = "mean", transition_topx = c(1,2,3), transition_strictness = "loose", transition_summary = "sum", fasta = NA, apex_model = NA, combine_precursors = FALSE, combine_peptide_sequences = FALSE, consensus_proteins = TRUE, consensus_peptides = TRUE, consensus_transitions = TRUE, scampi_method = "LSE", scampi_iterations = 10, scampi_outliers = FALSE, scampi_outliers_iterations = 2, scampi_outliers_threshold = 2, cval_method = "boot", cval_mcx = 1000, ...) {
 	pdf(file=report_filename)

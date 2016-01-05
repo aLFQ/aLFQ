@@ -15,9 +15,6 @@ apexFeatures.default <- function(x, ...) {
 }
 
 pcfeatures.apexFeatures <- function(x, ...) {
-	aa.index <- NULL
-	load(system.file("data","aa.index.rda",package="aLFQ"))
-	
 	aaspecies <- c("A","R","N","D","C","Q","E","G","H","I","L","K","M","F","P","S","T","W","Y","V")
 
 	featurelist <- c("FASG760101","CHOP780201","CHOP780202","CHOP780203","WERD780101","ZIMJ680104","KLEP840101","EISD860102","FAUJ880111","VINM940101","FAUJ880103","GUYH850105","NOZY710101")
@@ -53,8 +50,8 @@ pcfeatures.apexFeatures <- function(x, ...) {
 	
 		j <- 1
 		while (j <= features[["length"]]) {
-			if (!is.na(aa.index[[featurelist[i]]]$I[[aasequence[j]]])) {
-				feature_sum <- feature_sum + aa.index[[featurelist[i]]]$I[[aasequence[j]]]
+			if (!is.na(bio3d::aa.index[[featurelist[i]]]$I[[aasequence[j]]])) {
+				feature_sum <- feature_sum + bio3d::aa.index[[featurelist[i]]]$I[[aasequence[j]]]
 			}
 			j <- j + 1
 		}
