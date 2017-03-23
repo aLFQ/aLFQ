@@ -130,7 +130,7 @@ protein_inference.ProteinInference <- function(data.dt, peptide_method = "top", 
 			data.dt<-data.dt[, list("response"=mean(peptide_intensity)), by=key(data.dt)]
 		}
 		else if (peptide_summary == "median") {
-			data.dt<-data.dt[, list("response"=median(peptide_intensity)), by=key(data.dt)]
+			data.dt<-data.dt[, list("response"=as.numeric(median(peptide_intensity))), by=key(data.dt)]
 		}
 		else if (peptide_summary == "sum") {
 			data.dt<-data.dt[, list("response"=sum(peptide_intensity)), by=key(data.dt)]

@@ -2,4 +2,4 @@ library(testthat)
 library(aLFQ)
 
 
-test_package("aLFQ")
+test_check("aLFQ")
