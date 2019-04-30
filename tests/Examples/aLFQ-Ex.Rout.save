@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2017-03-23 r72385) -- "Unsuffered Consequences"
-Copyright (C) 2017 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin16.4.0 (64-bit)
+R Under development (unstable) (2019-04-30 r76443) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin18.5.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -23,6 +23,7 @@ Type 'q()' to quit R.
 > library('aLFQ')
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("ALF")
 > ### * ALF
@@ -128,8 +129,8 @@ Calibration Trainingset size: 4
 Calibration Testset size: 4
 Calibration Regression mean-fold error: 1.86633
 Calibration Regression R-squared: 0.9395671
-Calibration cross-validation mean-fold error: 3.751026
-Calibration cross-validation R-squared: 0.7392299
+Calibration cross-validation mean-fold error: 12.34445
+Calibration cross-validation R-squared: -5.535317
 Calibration CV: 17.53133
 Normalized Concentration CV: -86.98352
 > plot(data_AQ)
@@ -1096,9 +1097,10 @@ Dataset size: 20
 > 
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  6.292 0.199 6.513 0 0 
+Time elapsed:  2.577 0.136 2.72 0.001 0.002 
 > grDevices::dev.off()
 null device 
           1 

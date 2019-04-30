@@ -55,7 +55,7 @@ Ludwig, C., Claassen, M., Schmidt, A. & Aebersold, R. \emph{Estimation of Absolu
 
 Lu, P., Vogel, C., Wang, R., Yao, X. & Marcotte, E. M. \emph{Absolute protein expression profiling estimates the relative contributions of transcriptional and translational regulation.} Nat Biotech 25, 117-124 (2006).
 }
-\author{George Rosenberger \email{rosenberger@imsb.biol.ethz.ch}}
+\author{George Rosenberger \email{gr2578@cumc.columbia.edu}}
 
 \seealso{\code{\link{import}}, \code{\link{ProteinInference}}, \code{\link{ALF}}, \code{\link{APEX}}, \code{\link{apexFeatures}}, \code{\link{proteotypic}}}
 

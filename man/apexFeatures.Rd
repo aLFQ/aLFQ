@@ -29,7 +29,7 @@ Mallick, P. et al. \emph{Computational prediction of proteotypic peptides for qu
 
 Vogel, C. & Marcotte, E. M. \emph{Calculating absolute and relative protein abundance from mass spectrometry-based protein expression data.} Nat Protoc 3, 1444-1451 (2008).
 }
-\author{George Rosenberger \email{rosenberger@imsb.biol.ethz.ch}}
+\author{George Rosenberger \email{gr2578@cumc.columbia.edu}}
 
 \seealso{\code{\link{import}}, \code{\link{ProteinInference}}, \code{\link{AbsoluteQuantification}}, \code{\link{ALF}}, \code{\link{APEX}}, \code{\link{proteotypic}}}
 

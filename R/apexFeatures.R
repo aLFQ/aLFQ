@@ -1,7 +1,7 @@
 apexFeatures <- function(x, ...) UseMethod("apexFeatures")
 
 apexFeatures.default <- function(x, ...) {
-	if (class(x)!="data.frame" || dim(x)[1] < 1 || dim(x)[2] != 2 || sort(names(x)) != c("apex","peptide_sequence")) {stop("The input for apexFeatures is a mandatory data frame containing the variables in the model. The data frame requires the columns \"peptide_sequence\", \"apex\". The data may contain training data (with boolean \"apex\" and test data (with \"apex\"=NA))", call. = FALSE)}
+	if (class(x)!="data.frame" || dim(x)[1] < 1 || dim(x)[2] != 2 || all(sort(names(x)) != c("apex","peptide_sequence"))) {stop("The input for apexFeatures is a mandatory data frame containing the variables in the model. The data frame requires the columns \"peptide_sequence\", \"apex\". The data may contain training data (with boolean \"apex\" and test data (with \"apex\"=NA))", call. = FALSE)}
 
 	x <- unique(x)
 	

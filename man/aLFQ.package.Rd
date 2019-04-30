@@ -9,10 +9,10 @@
 \tabular{ll}{
 Package: \tab aLFQ\cr
 Type: \tab Package\cr
-Version: \tab 1.3.4\cr
-Date: \tab 2017-03-23\cr
+Version: \tab 1.3.5\cr
+Date: \tab 2019-04-30\cr
 Author: \tab George Rosenberger, Hannes Roest, Christina Ludwig, Ruedi Aebersold, Lars Malmstroem\cr
-Maintainer: \tab George Rosenberger <rosenberger@imsb.biol.ethz.ch>\cr
+Maintainer: \tab George Rosenberger <gr2578@cumc.columbia.edu>\cr
 Depends: \tab R (>= 2.15.0)\cr
 Imports: \tab data.table, plyr, caret, seqinr, lattice, randomForest, ROCR, reshape2, protiq, bio3d\cr
 Suggests: \tab testthat\cr

@@ -52,7 +52,7 @@ MacLean, B. et al. \emph{Skyline: an open source document editor for creating an
 
 Fermin, D., Basrur, V., Yocum, A. K. & Nesvizhskii, A. I. \emph{Abacus: A computational tool for extracting and pre-processing spectral count data for label-free quantitative proteomic analysis.} PROTEOMICS 11, 1340-1345 (2011).
 }
-\author{George Rosenberger \email{rosenberger@imsb.biol.ethz.ch}}
+\author{George Rosenberger \email{gr2578@cumc.columbia.edu}}
 
 \seealso{\code{\link{ProteinInference}}, \code{\link{AbsoluteQuantification}}, \code{\link{ALF}}, \code{\link{APEX}}, \code{\link{apexFeatures}}, \code{\link{proteotypic}}}
 

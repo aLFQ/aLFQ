@@ -62,7 +62,7 @@ Zybailov, B. et al. \emph{Statistical Analysis of Membrane Proteome Expression C
 
 Gerster S., Kwon T., Ludwig C., Matondo M., Vogel C., Marcotte E. M., Aebersold R., Buhlmann P. \emph{Statistical approach to protein quantification.} Molecular & Cellular Proteomics 13, M112.02445 (2014).
 }
-\author{George Rosenberger \email{rosenberger@imsb.biol.ethz.ch}}
+\author{George Rosenberger \email{gr2578@cumc.columbia.edu}}
 
 \seealso{\code{\link{import}}, \code{\link{AbsoluteQuantification}}, \code{\link{ALF}}, \code{\link{APEX}}, \code{\link{apexFeatures}}, \code{\link{proteotypic}}, \code{\link[protiq]{runScampi}}, \code{\link[protiq]{iterateScampi}}}
 

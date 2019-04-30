@@ -15,6 +15,7 @@ test_that("ProteinInference.default: Absolute abundance estimation of endogenous
 # ProteinInference.default
 test_that("ProteinInference.default: More complex data", {
 	data(UPS2MS)
+	suppressWarnings(RNGversion("3.5.0"))
 	set.seed(131)
 	REP1<-UPS2_SRM[sample(854,800),]
 	REP1[which(REP1$protein_id %in% unique(REP1$protein_id)[1:10]),]$concentration<-"?"
@@ -160,6 +161,7 @@ test_that("PeptideInference: loose / strict selection criterion", {
 # PeptideInference
 test_that("PeptideInference: More complex data", {
 	data(UPS2MS)
+	suppressWarnings(RNGversion("3.5.0"))
 	set.seed(131)
 	REP1<-UPS2_SRM[sample(854,800),]
 	REP1[which(REP1$protein_id %in% unique(REP1$protein_id)[1:10]),]$concentration<-"?"

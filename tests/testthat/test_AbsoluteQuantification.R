@@ -22,6 +22,7 @@ test_that("folderror.AbsoluteQuantification", {
 
 # cval.AbsoluteQuantification
 test_that("cval.AbsoluteQuantification: Monte Carlo", {
+	suppressWarnings(RNGversion("3.5.0"))
 	set.seed(131)
 	expect_that(cval.AbsoluteQuantification(AbsoluteQuantification.default(ProteinInference.default(UPS2_SRM, peptide_method = "top", peptide_topx = 1, peptide_strictness = "loose",peptide_summary = "mean", transition_topx = 3, transition_strictness = "loose",transition_summary = "sum",combine_precursors = FALSE, consensus_proteins = TRUE, consensus_peptides = TRUE, consensus_transitions = TRUE)),cval_method="mc",mcx=2)$cval[c("r.squared","mfe")],equals(list("r.squared"=0.9292566,"mfe"=1.761073), tolerance = .001))
 
@@ -34,6 +35,7 @@ test_that("cval.AbsoluteQuantification: Monte Carlo", {
 
 # AbsoluteQuantification.default
 test_that("AbsoluteQuantification.default", {
+	suppressWarnings(RNGversion("3.5.0"))
 	set.seed(131)
 	REP1<-UPS2_SRM[sample(854,800),]
 	REP1[which(REP1$protein_id %in% unique(REP1$protein_id)[1:10]),]$concentration<-"?"
